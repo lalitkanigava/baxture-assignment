@@ -40,7 +40,7 @@ const createUser = (req, res) => {
 
     usersObject.push(newUser)
     
-    res.status(201).json(newUser)
+    res.status(201).json({user:newUser})
 }
 
 const updateUser = (req, res) => {
@@ -60,7 +60,7 @@ const updateUser = (req, res) => {
     const {username, age, hobbies} = req.body
 
     usersObject[userIndex] = {
-        "id" : userId,
+        "id": userId,
         "username": username || usersObject[userIndex]['username'],
         "age": age || usersObject[userIndex]['age'],
         "hobbies": hobbies || usersObject[userIndex]['hobbies'],
@@ -86,7 +86,7 @@ const deleteUser = (req, res) => {
 
     usersObject.splice(userIndex, 1)
 
-    res.status(204).send("User deleted successfully.")
+    res.status(204).json({msg:"User deleted successfully."})
 }
 
 module.exports = {
